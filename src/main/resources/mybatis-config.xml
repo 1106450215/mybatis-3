@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--定义别名   -->
+    <typeAliases>
+        <package name="com.mybatis.test.chapter2.entity"/>
+    </typeAliases>
+    <!--定义数据库信息,默认使用development   -->
+    <environments default="development">
+        <environment id="development">
+            <!--采用jdbc管理事务            -->
+            <transactionManager type="JDBC"/>
+            <!--配置数据库连接信息            -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url"
+                          value="jdbc:mysql://106.54.180.115:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="Ly123456!"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--定义映射器    -->
+    <mappers>
+        <!--方式一：使用映射器接口实现类的完全限定类名 class
+        <mapper resource="com.mybatis.test.chapter2.mapper.PersonMapper"/> -->
+        <!--方式二： 包内的映射器接口实现全部注册为映射器 package       -->
+        <package name="com.mybatis.test.chapter2.mapper"/>
+    </mappers>
+</configuration>
